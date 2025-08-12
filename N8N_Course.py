@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 # Set page config
 st.set_page_config(
@@ -15,11 +16,14 @@ page = st.sidebar.radio(
 
 # Main content based on page selection
 if page == "Home":
-    # Main title
     st.title("📚 Welcome to AI Learning Hub")
     st.divider()
     # Add poster image
-    st.image("/Users/patsanansuksiri/Personal_Business/Poster - Master AI Today.png", use_container_width=True)
+    if os.path.exists("Poster.png"):
+        st.image("Poster.png", use_container_width=True)
+    else:
+        st.warning("Poster image not found. Please check if 'Poster.png' exists.")
+
 
 
 elif page == "What is N8N?":
@@ -30,12 +34,11 @@ elif page == "What is N8N?":
     # Embed the video
     st.video(youtube_url)
 
-
 elif page == "About us":
     st.title("ℹ️ About us")
     st.write("Information about the instructors (Kru Yim and Kru Bib).")
     
     # Display CV images
-    st.image("/Users/patsanansuksiri/Personal_Business/CV_Bib_1.jpg", use_container_width=True)
-    st.image("/Users/patsanansuksiri/Personal_Business/CV_Bib_2.jpg", use_container_width=True)
+    st.image("CV_Bib_1.jpg", use_container_width=True)
+    st.image("CV_Bib_2.jpg", use_container_width=True)
 
